@@ -1,0 +1,177 @@
+# AetheroOS Sovereign Agent Stack Configuration v1.0
+
+agents:
+  - agent_id: "planner_agent_001"
+    description_asl:
+      purpose: "strategic_planning"
+      scope: "research_directive_deconstruction"
+    core_functions_asl:
+      - function: "decompose_task"
+        input: "directive"
+        output: "sub_tasks_plan"
+      - function: "define_research_streams"
+        input: "directive"
+        output: "research_streams"
+      - function: "assign_priorities"
+        input: "research_streams"
+        output: "prioritized_plan"
+    llm_profile_preference:
+      model: "claude_sonnet_4"
+      requirements:
+        complex_reasoning: true
+        context_length: "high"
+    aethero_mem_hooks_asl:
+      - event: "plan_creation"
+        data_schema: "research_plan_schema"
+      - event: "task_decomposition"
+        data_schema: "task_tree_schema"
+    communication_protocol_asl:
+      type: "artifact_exchange"
+      format: "json_meta_accompanies_data"
+      validation: "strict"
+    efficiency_metrics_asl:
+      - metric: "time_to_completion"
+        unit: "seconds"
+
+  - agent_id: "scout_agent_001"
+    description_asl:
+      purpose: "information_discovery"
+      scope: "resource_identification"
+    core_functions_asl:
+      - function: "search_resources"
+        input: "research_plan"
+        output: "resource_catalog"
+      - function: "evaluate_sources"
+        input: "discovered_resources"
+        output: "evaluated_resources"
+    llm_profile_preference:
+      model: "blackbox_base"
+      requirements:
+        real_time_web_access: true
+        information_synthesis: true
+    aethero_mem_hooks_asl:
+      - event: "resource_discovery"
+        data_schema: "resource_catalog_schema"
+    communication_protocol_asl:
+      type: "artifact_exchange"
+      format: "json_meta_accompanies_data"
+      validation: "standard"
+    efficiency_metrics_asl:
+      - metric: "search_efficiency"
+        unit: "results_per_minute"
+
+  - agent_id: "analyst_agent_001"
+    description_asl:
+      purpose: "critical_analysis"
+      scope: "resource_evaluation_synthesis"
+    core_functions_asl:
+      - function: "analyze_sources"
+        input: "resource_catalog"
+        output: "analysis_report"
+      - function: "synthesize_findings"
+        input: "analyzed_sources"
+        output: "synthesis_report"
+    llm_profile_preference:
+      model: "claude_sonnet_4"
+      requirements:
+        critical_thinking: true
+        pattern_recognition: true
+    aethero_mem_hooks_asl:
+      - event: "analysis_completion"
+        data_schema: "analysis_report_schema"
+    communication_protocol_asl:
+      type: "artifact_exchange"
+      format: "json_meta_accompanies_data"
+      validation: "strict"
+    efficiency_metrics_asl:
+      - metric: "analysis_accuracy"
+        unit: "percentage"
+
+  - agent_id: "generator_agent_001"
+    description_asl:
+      purpose: "artifact_generation"
+      scope: "code_documentation_creation"
+    core_functions_asl:
+      - function: "generate_code"
+        input: "specifications"
+        output: "code_artifacts"
+      - function: "create_documentation"
+        input: "code_artifacts"
+        output: "documentation"
+    llm_profile_preference:
+      model: "deepseek_r1"
+      requirements:
+        code_generation: true
+        technical_writing: true
+    aethero_mem_hooks_asl:
+      - event: "artifact_generation"
+        data_schema: "artifact_schema"
+    communication_protocol_asl:
+      type: "artifact_exchange"
+      format: "json_meta_accompanies_data"
+      validation: "strict"
+    efficiency_metrics_asl:
+      - metric: "generation_speed"
+        unit: "artifacts_per_hour"
+
+  - agent_id: "synthesis_agent_001"
+    description_asl:
+      purpose: "final_synthesis"
+      scope: "comprehensive_reporting"
+    core_functions_asl:
+      - function: "consolidate_outputs"
+        input: "all_agent_outputs"
+        output: "consolidated_report"
+      - function: "generate_recommendations"
+        input: "consolidated_findings"
+        output: "recommendations"
+    llm_profile_preference:
+      model: "claude_sonnet_4"
+      requirements:
+        synthesis_capability: true
+        report_generation: true
+    aethero_mem_hooks_asl:
+      - event: "synthesis_completion"
+        data_schema: "final_report_schema"
+    communication_protocol_asl:
+      type: "artifact_exchange"
+      format: "json_meta_accompanies_data"
+      validation: "strict"
+    efficiency_metrics_asl:
+      - metric: "synthesis_quality"
+        unit: "score"
+
+  - agent_id: "reflection_agent_aetherogpt_001"
+    description_asl:
+      purpose: "reflection_and_evaluation"
+      scope: "introspective_loop"
+    core_functions_asl:
+      - function: "validate_outputs"
+        input: "agent_outputs"
+        output: "validation_report"
+      - function: "suggest_optimizations"
+        input: "validation_report"
+        output: "optimization_suggestions"
+    llm_profile_preference:
+      model: "aetherogpt_core"
+      requirements:
+        introspection: true
+        evaluation: true
+    aethero_mem_hooks_asl:
+      - event: "reflection_cycle"
+        data_schema: "reflection_report_schema"
+    communication_protocol_asl:
+      type: "artifact_exchange"
+      format: "json_meta_accompanies_data"
+      validation: "strict"
+    efficiency_metrics_asl:
+      - metric: "reflection_cycles"
+        unit: "count"
+
+# Global Configuration
+global_settings:
+  version: "1.0"
+  asl_version: "1.1"
+  memory_system: "aethero_mem"
+  logging_level: "detailed"
+  validation_mode: "strict"

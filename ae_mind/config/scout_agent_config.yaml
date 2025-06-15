@@ -1,0 +1,70 @@
+# Scout Agent Configuration
+name: scout_agent
+version: 1.0
+llm_client: openai
+
+# Core Settings
+role: resource_discovery
+priority: 2
+timeout: 300
+retry_limit: 3
+
+# Performance Settings
+max_concurrent_tasks: 10
+memory_limit_mb: 256
+log_level: INFO
+
+# ASL Integration
+asl_tags:
+  - content_type
+  - relevance_to_stream
+  - source_type
+  - accessibility
+
+# Resource Types
+resource_categories:
+  - documentation
+  - code_samples
+  - research_papers
+  - external_apis
+  - system_logs
+
+# Search Configuration
+search_settings:
+  depth_limit: 3
+  max_results_per_query: 50
+  relevance_threshold: 0.7
+  cache_duration_minutes: 30
+
+# Output Configuration
+output_formats:
+  - resource_catalog
+  - metadata_index
+  - relevance_report
+
+# Dependencies
+required_services:
+  - search_engine
+  - metadata_processor
+  - cache_service
+
+# Recovery Settings
+error_handling:
+  max_retries: 3
+  backoff_factor: 1.5
+  recovery_strategies:
+    - alternate_source
+    - cache_fallback
+    - reduced_scope
+
+# Monitoring
+metrics:
+  - search_efficiency
+  - discovery_accuracy
+  - response_time
+  - error_rate
+
+# Security
+access_level: data_access
+encryption_required: true
+auth_required: true

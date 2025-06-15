@@ -1,0 +1,60 @@
+# Planner Agent Configuration
+name: planner_agent
+version: 1.0
+llm_client: openai
+
+# Core Settings
+role: strategic_planning
+priority: 1
+timeout: 300
+retry_limit: 3
+
+# Performance Settings
+max_concurrent_tasks: 5
+memory_limit_mb: 512
+log_level: INFO
+
+# ASL Integration
+asl_tags:
+  - mental_state
+  - certainty_level
+  - task_status
+  - context_id
+
+# Task Processing
+task_types:
+  - research_directive
+  - system_analysis
+  - workflow_planning
+
+# Output Configuration
+output_formats:
+  - structured_plan
+  - asl_tagged_report
+  - task_breakdown
+
+# Dependencies
+required_agents:
+  - scout_agent
+  - analyst_agent
+
+# Recovery Settings
+error_handling:
+  max_retries: 3
+  backoff_factor: 1.5
+  recovery_strategies:
+    - task_reassignment
+    - state_recovery
+    - graceful_degradation
+
+# Monitoring
+metrics:
+  - task_completion_rate
+  - planning_accuracy
+  - response_time
+  - error_rate
+
+# Security
+access_level: system
+encryption_required: true
+auth_required: true

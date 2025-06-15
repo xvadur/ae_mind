@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>AetheroOS Ministerial Report</title>
+    <style>
+        body {
+            font-family: "Times New Roman", serif;
+            margin: 2cm;
+            line-height: 1.5;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2em;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+        .office {
+            font-size: 18px;
+            margin-bottom: 0.5em;
+        }
+        .ref-code {
+            font-size: 16px;
+            margin-bottom: 2em;
+        }
+        .section {
+            margin: 2em 0;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 1em;
+            border-bottom: 1px solid #000;
+            padding-bottom: 0.5em;
+        }
+        .footer {
+            margin-top: 4em;
+            text-align: center;
+        }
+        .seal {
+            font-size: 24px;
+            margin-bottom: 1em;
+        }
+        .signature {
+            margin-top: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">AETHEROOS MINISTERIAL REPORT</div>
+        <div class="office">Office of {{ office }}</div>
+        <div class="ref-code">Ref. Code: {{ ref_code }}</div>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🪶 PURPOSE</div>
+        <p>{{ purpose }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🪶 FINDINGS</div>
+        <p>{{ findings }}</p>
+    </div>
+
+    <div class="section">
+        <div class="section-title">🪶 RECOMMENDATIONS</div>
+        <p>{{ recommendations }}</p>
+    </div>
+
+    <div class="footer">
+        <div class="seal">Ministerial Seal: [ ⚜️ ]</div>
+        <div class="signature">
+            <p><strong>Signed:</strong> {{ author }}</p>
+            <p><strong>Date:</strong> {{ date }}</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+# ae_mind
+# Modular Introspective Parser System for GPT Conversation Archives
+
+# This file lists all files to be included in the ae_mind repo migration.
+# Use this as a checklist for copying/moving files into the new folder.
+
+# Core pipeline
+run_parser_demo.py
+src/introspective_parser/phase1_linguistic_analyzer.py
+src/introspective_parser/phase2_psychological_introspector.py
+aethero_memory_parser.py
+
+# AST/JSONC validation
+src/ae_parser/
+
+# Government/agent structure
+constitution_monumentum_veritas.md
+government_meeting_2025-06-15.md
+orchestration_alignment_report.md
+agents/analyst_agent.md
+agents/generator_agent.md
+agents/planner_agent.md
+agents/scout_agent.md
+agents/synthesis_agent.md
+
+# Templates
+templates/ministerial_report.md
+templates/ministerial_report.html
+
+# Requirements
+requirements.txt
+
+# Documentation
+README.md
+ONBOARDING.md
+
+# (Optional: add sample data, docs, or other relevant files as needed)

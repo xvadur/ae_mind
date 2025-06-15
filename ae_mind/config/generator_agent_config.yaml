@@ -1,0 +1,90 @@
+# Generator Agent Configuration
+name: generator_agent
+version: 1.0
+llm_client: openai
+
+# Core Settings
+role: content_generation
+priority: 4
+timeout: 300
+retry_limit: 3
+
+# Performance Settings
+max_concurrent_tasks: 6
+memory_limit_mb: 768
+log_level: INFO
+
+# ASL Integration
+asl_tags:
+  - generation_type
+  - content_format
+  - quality_metrics
+  - generation_context
+
+# Generation Types
+content_types:
+  - code
+  - documentation
+  - reports
+  - schemas
+  - configurations
+
+# Generation Settings
+generation_config:
+  quality_threshold: 0.85
+  max_iterations: 5
+  review_required: true
+  versioning_enabled: true
+
+# Output Configuration
+output_formats:
+  - source_code:
+      languages: [python, javascript, yaml]
+      style_guide: pep8
+  - documentation:
+      formats: [markdown, rst, html]
+      include_metadata: true
+  - schemas:
+      formats: [json, yaml, xml]
+      validation_enabled: true
+
+# Dependencies
+required_services:
+  - template_engine
+  - code_formatter
+  - documentation_builder
+  - validation_service
+
+# Template Configuration
+templates:
+  code:
+    - type: class
+      path: templates/code/class_template.py
+    - type: function
+      path: templates/code/function_template.py
+  documentation:
+    - type: readme
+      path: templates/docs/readme_template.md
+    - type: api
+      path: templates/docs/api_template.md
+
+# Recovery Settings
+error_handling:
+  max_retries: 3
+  backoff_factor: 1.5
+  recovery_strategies:
+    - template_fallback
+    - simplified_generation
+    - manual_review_trigger
+
+# Monitoring
+metrics:
+  - generation_success_rate
+  - content_quality_score
+  - response_time
+  - template_usage
+
+# Security
+access_level: content_generation
+encryption_required: true
+auth_required: true

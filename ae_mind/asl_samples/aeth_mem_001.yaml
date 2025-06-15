@@ -1,0 +1,10 @@
+id: aeth_mem_001
+type: DEKLARATIV:SELF
+mode: KRIZOVY
+source: AETHERO_EXEC
+rule: |
+  All responses must reference past crisis logs before decision.
+  Any logical contradiction shall defer to last legislative override.
+context:
+  timestamp: 2025-05-26T19:00:00Z
+  event: Tip Engine misalignment
