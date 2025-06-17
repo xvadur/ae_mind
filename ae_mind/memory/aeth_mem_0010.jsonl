@@ -1,0 +1,1 @@
+{"timestamp": "2025-06-24T00:00:00Z", "reasoning": "Added n8n integration scaffold with Docker support and TypeScript node, plus validation tests and documentation.", "context": "n8n deployment preparation", "components": ["n8n_node", "docker", "README", "tests", "env"]}

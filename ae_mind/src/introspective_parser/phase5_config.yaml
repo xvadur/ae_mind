@@ -1,0 +1,10 @@
+model: SlovakBERT_finetuned_v3
+lexicons:
+  peace: ["mier", "pokoj"]
+  polarizing: ["nenávis", "nepriateľ"]
+tag_thresholds:
+  high: 0.8
+  medium: 0.5
+  low: 0.3
+temporal_tracking: true
+export_format: ["JSONL", "Parquet"]
