@@ -79,3 +79,33 @@ ae_mind/
 
 ## License
 See `LICENSE` for details.
+
+## n8n Integration
+
+A custom node `aeMindNode` is provided in `n8n_node/aeMindNode.ts` to execute the parser within n8n workflows. It wraps the Python pipeline using `child_process` and returns the serialized `EthicalVectorBlock`.
+
+### Example Usage
+1. Compile the TypeScript file with `tsc`.
+2. Copy the resulting JavaScript into your n8n custom nodes directory.
+3. Import the node in your workflow. A sample workflow is provided in `test.n8n.json`.
+
+## Docker Deployment
+
+The `docker/` folder contains a `Dockerfile` used to build a parser image. A root
+`docker-compose.yml` links this parser with an `n8n` container and mounts the
+repository so the workflow can execute the pipeline.
+
+Build and start the stack:
+
+```bash
+docker compose build
+docker compose up
+```
+
+After the services start, open `http://localhost:5678` to configure the n8n
+workflow. Import `aethero_pipeline_workflow.json` to get a ready-made HTTP
+endpoint that triggers the parser.
+
+## Configuration
+
+Phase5 uses `phase5_config.yaml` to define model options and thresholds. Adjust this file to tune ethical vector generation.

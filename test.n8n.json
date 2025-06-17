@@ -1,0 +1,35 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "path": "/webhook"
+      },
+      "id": "1",
+      "name": "HTTP Trigger",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "text": "Ukážkový parlamentný prejav"
+      },
+      "id": "2",
+      "name": "AE Mind Parser",
+      "type": "aeMindParser",
+      "typeVersion": 1
+    }
+  ],
+  "connections": {
+    "HTTP Trigger": {
+      "main": [
+        [
+          {
+            "node": "AE Mind Parser",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

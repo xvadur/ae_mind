@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  parser:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./:/ae_mind
+    env_file:
+      - .env.template
+    entrypoint: ["python", "-m", "ae_mind.src.introspective_parser.run_pipeline"]
+
+  n8n:
+    image: n8nio/n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    depends_on:
+      - parser
