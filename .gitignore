@@ -2,3 +2,10 @@ lib/
 node_modules/
 yarn.lock
 aethero_n8n_bundle.zip
+*.zip
+*.parquet
+*.bin
+*.onnx
+*.pdf
+output/
+__pycache__/

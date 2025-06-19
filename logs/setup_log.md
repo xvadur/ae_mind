@@ -5,3 +5,4 @@
 - Generated n8n workflow `aethero_pipeline_workflow.json`
 - Updated README with deployment instructions
 - Bundled source files into `aethero_n8n_bundle.zip`
+2025-06-19 — OBS mention corrected to VSCode — ready for local dev

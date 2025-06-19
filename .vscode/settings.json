@@ -1,4 +1,5 @@
 {
+  "python.defaultInterpreterPath": "python3",
   "git.branchProtection": [
     "main"
   ],
