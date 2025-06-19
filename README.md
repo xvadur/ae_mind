@@ -50,6 +50,30 @@ aetheroos/
 ## Príspevky a rozširovanie
 Projekt je otvorený pre komunitu. Prispievaj cez pull requesty, issues alebo diskusie. Každý nový agent, workflow alebo integrácia je vítaná!
 
+## Visual Studio Code Setup
+Systém je možné pohodlne otvoriť vo [Visual Studio Code](https://code.visualstudio.com/) na lokálny vývoj.
+
+### How to open in VSCode and run locally
+1. Spusti VSCode v koreňovom adresári projektu:
+
+```bash
+code .
+```
+
+2. Nainštaluj závislosti:
+
+```bash
+pip install -r ae_mind/requirements.txt
+```
+
+3. Použi pripravenú VSCode konfiguráciu **Run Parser Pipeline** (`F5`), prípadne spusti manuálne:
+
+```bash
+python ae_mind/src/introspective_parser/run_pipeline.py INPUT_FILE --out output.md
+```
+
+Terminálový výstup bude dostupný priamo vo VSCode.
+
 ---
 
 **AetheroOS – budúcnosť digitálnej vlády a agentických systémov.**

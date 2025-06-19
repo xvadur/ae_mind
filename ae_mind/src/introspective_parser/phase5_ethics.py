@@ -59,9 +59,24 @@ class Phase5Ethics:
             )
         return results
 
-    def run(self, inputs: List[IntrospectiveInput]) -> List[EthicalVectorBlock]:
+    def persist(self, blocks: List[EthicalVectorBlock], path: Path) -> None:
+        """Save ethical vectors to parquet and JSONL."""
         try:
-            return self.analyze(inputs)
+            import pandas as pd
+
+            records = [b.dict() for b in blocks]
+            df = pd.DataFrame(records)
+            df.to_parquet(path)
+            df.to_json(path.with_suffix(".jsonl"), orient="records", lines=True, force_ascii=False)
+        except Exception as exc:  # pragma: no cover - optional dependency
+            logging.exception("Failed to persist Phase5 output: %s", exc)
+
+    def run(self, inputs: List[IntrospectiveInput], output: Path | None = None) -> List[EthicalVectorBlock]:
+        try:
+            res = self.analyze(inputs)
+            if output:
+                self.persist(res, output)
+            return res
         except Exception as exc:  # pragma: no cover - safety
             logging.exception("Ethics phase failed: %s", exc)
             return []

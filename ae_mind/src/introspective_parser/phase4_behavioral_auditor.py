@@ -56,11 +56,32 @@ class Phase4BehavioralAuditor:
             timestamp=datetime.utcnow(),
         )
 
-    def run(self, profiles: List[SpeakerProfile]) -> List[SpeakerProfile]:
-        """Attach behavioral audit blocks to profiles."""
+    def persist(self, profiles: List[SpeakerProfile], path: str) -> None:
+        """Save audited profiles to parquet and JSONL."""
+        try:
+            import pandas as pd
+
+            records = []
+            for p in profiles:
+                data = p.model_dump()
+                if data.get("behavioral_audit"):
+                    ba = data["behavioral_audit"]
+                    ba["timestamp"] = ba["timestamp"].isoformat()
+                    data["behavioral_audit"] = ba
+                records.append(data)
+            df = pd.DataFrame(records)
+            df.to_parquet(path)
+            df.to_json(path.replace(".parquet", ".jsonl"), orient="records", lines=True, force_ascii=False)
+        except Exception as exc:  # pragma: no cover - optional dependency
+            logging.exception("Failed to persist Phase4 output: %s", exc)
+
+    def run(self, profiles: List[SpeakerProfile], output: str | None = None) -> List[SpeakerProfile]:
+        """Attach behavioral audit blocks to profiles and optionally persist."""
         for profile in profiles:
             try:
                 profile.behavioral_audit = self.audit_profile(profile)
             except Exception as exc:  # pragma: no cover - safety
                 logging.exception("Behavioral audit failed: %s", exc)
+        if output:
+            self.persist(profiles, output)
         return profiles
